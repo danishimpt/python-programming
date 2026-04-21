@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danish | Web Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+  /* ============================================
+     RESET — removes default browser spacing
+  ============================================ */
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* ============================================
+     CSS VARIABLES — change colors here easily!
+     Try changing --accent to any color you like.
+  ============================================ */
+  :root {
+    --bg: #0e0e0e;         /* Page background */
+    --surface: #161616;    /* Card background */
+    --accent: #c8f04a;     /* Green highlight color */
+    --text: #f0f0f0;       /* Main text */
+    --muted: #888;         /* Grey/dim text */
+    --border: #2a2a2a;     /* Border lines */
+  }
+
+  /* ============================================
+     BODY — base page styles
+  ============================================ */
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden; /* prevents horizontal scroll */
+  }
+
+  /* ============================================
+     NAVIGATION BAR
+  ============================================ */
+  nav {
+    display: flex;                  /* puts logo & links side by side */
+    justify-content: space-between; /* logo left, links right */
+    align-items: center;
+    padding: 1.5rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky;    /* stays at top when scrolling */
+    top: 0;
+    background: rgba(14,14,14,0.95);
+    backdrop-filter: blur(10px); /* glass blur effect */
+    z-index: 100;        /* stays above other content */
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
+  }
+  .logo span {
+    color: var(--accent); /* the dot is green */
+  }
+
+  nav ul {
+    list-style: none;   /* removes bullet points */
+    display: flex;
+    gap: 2rem;          /* space between links */
+  }
+  nav ul a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s; /* smooth color change on hover */
+  }
+  nav ul a:hover {
+    color: var(--text);
+  }
+
+  /* ============================================
+     HERO SECTION — the main intro area
+  ============================================ */
+  .hero {
+    padding: 5rem 2.5rem 4rem;
+    max-width: 900px;
+    animation: fadeUp 0.8s ease both; /* slides up on load */
+  }
+
+  /* The small green pill label */
+  .badge {
+    display: inline-block;
+    background: rgba(200,240,74,0.1);
+    border: 1px solid rgba(200,240,74,0.3);
+    color: var(--accent);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px; /* fully rounded */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Big heading */
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem); /* responsive font size */
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    margin-bottom: 1.2rem;
+  }
+  h1 .highlight {
+    color: var(--accent); /* "Danish." is green */
+  }
+
+  .hero p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  /* Buttons row */
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap; /* wraps on small screens */
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0e0e0e;       /* dark text on green button */
+    padding: 0.75rem 1.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover {
+    opacity: 0.85;
+    transform: translateY(-1px); /* slight lift on hover */
+  }
+
+  .btn-secondary {
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.75rem 1.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+  }
+  .btn-secondary:hover {
+    border-color: var(--muted);
+  }
+
+  /* ============================================
+     REUSABLE SECTION STYLES
+  ============================================ */
+  .section {
+    padding: 3rem 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* Small uppercase label above each section */
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  /* ============================================
+     SKILLS SECTION
+  ============================================ */
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap; /* wraps tags to next line if needed */
+    gap: 0.6rem;
+  }
+
+  .skill-tag {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: var(--text);
+    transition: border-color 0.2s;
+  }
+  .skill-tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ============================================
+     PROJECTS SECTION
+  ============================================ */
+  .projects-grid {
+    display: grid;
+    /* auto-fill = as many columns as fit, min 260px each */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.25s, transform 0.25s;
+    cursor: pointer;
+  }
+  .project-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px); /* lifts up on hover */
+  }
+
+  .project-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .project-card p {
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  /* Colored tags inside project cards */
+  .project-tags {
+    display: flex;
+    gap: 0.4rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  .project-tag {
+    font-size: 0.7rem;
+    color: var(--accent);
+    background: rgba(200,240,74,0.08);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  /* ============================================
+     CONTACT SECTION
+  ============================================ */
+  .contact-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .contact-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    font-size: 0.85rem;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .contact-item span {
+    color: var(--text);
+  }
+
+  /* ============================================
+     FOOTER
+  ============================================ */
+  footer {
+    padding: 1.5rem 2.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* ============================================
+     ANIMATION — fadeUp slides content in on load
+  ============================================ */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px); /* starts 24px below */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);    /* ends at normal position */
+    }
+  }
+
+  .section {
+    animation: fadeUp 0.8s ease both;
+    animation-delay: 0.2s; /* sections appear slightly after hero */
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="logo">D<span>.</span>dev</div>
+  <!-- CUSTOMIZE: change the links below to match your sections -->
+  <ul>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero">
+  <!-- CUSTOMIZE: change "Available for freelance" to whatever status you want -->
+  <div class="badge">Available for freelance</div>
+
+  <!-- CUSTOMIZE: Replace "Danish" with your name -->
+  <h1>Hi, I'm <span class="highlight">Danish.</span><br>I build clean websites.</h1>
+
+  <!-- CUSTOMIZE: Edit this description to match your real skills -->
+  <p>BCA student & junior web developer from Srinagar. I build simple, responsive, and well-coded webpages using HTML & CSS.</p>
+
+  <div class="hero-btns">
+    <a href="#projects" class="btn-primary">See My Work</a>
+    <!-- CUSTOMIZE: Replace # with your Upwork or email link -->
+    <a href="#contact" class="btn-secondary">Hire Me</a>
+  </div>
+</div>
+
+<!-- SKILLS SECTION -->
+<div class="section" id="skills">
+  <div class="section-label">What I know</div>
+  <div class="skills-grid">
+    <!-- CUSTOMIZE: Add or remove skill tags as needed -->
+    <div class="skill-tag">HTML5</div>
+    <div class="skill-tag">CSS3</div>
+    <div class="skill-tag">Responsive Design</div>
+    <div class="skill-tag">PHP</div>
+    <div class="skill-tag">C Programming</div>
+    <div class="skill-tag">Git & GitHub</div>
+    <div class="skill-tag">Bootstrap</div>
+    <div class="skill-tag">Linux</div>
+  </div>
+</div>
+
+<!-- PROJECTS SECTION -->
+<div class="section" id="projects">
+  <div class="section-label">Projects</div>
+  <div class="projects-grid">
+
+    <!-- PROJECT CARD 1 — Copy this block to add more projects -->
+    <div class="project-card">
+      <div class="project-icon">🗂️</div>
+      <!-- CUSTOMIZE: Change title, description, and tags -->
+      <h3>Student Result Page</h3>
+      <p>A simple result card system for students. Enter marks, get a clean result output.</p>
+      <div class="project-tags">
+        <span class="project-tag">HTML</span>
+        <span class="project-tag">CSS</span>
+        <span class="project-tag">PHP</span>
+      </div>
+    </div>
+
+    <!-- PROJECT CARD 2 -->
+    <div class="project-card">
+      <div class="project-icon">📬</div>
+      <h3>PHP Contact Form</h3>
+      <p>A functional contact form with validation and email submission using PHP.</p>
+      <div class="project-tags">
+        <span class="project-tag">HTML</span>
+        <span class="project-tag">CSS</span>
+        <span class="project-tag">PHP</span>
+      </div>
+    </div>
+
+    <!-- PROJECT CARD 3 -->
+    <div class="project-card">
+      <div class="project-icon">🌐</div>
+      <h3>Personal Portfolio</h3>
+      <p>This very page — built from scratch with clean HTML & CSS, fully responsive.</p>
+      <div class="project-tags">
+        <span class="project-tag">HTML</span>
+        <span class="project-tag">CSS</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<div class="section" id="contact">
+  <div class="section-label">Get in touch</div>
+  <div class="contact-row">
+    <!-- CUSTOMIZE: Replace with your real email and location -->
+    <div class="contact-item">📧 <span>danish@email.com</span></div>
+    <div class="contact-item">📍 <span>Srinagar, J&K, India</span></div>
+    <div class="contact-item">💼 <span>Open to freelance work</span></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <!-- CUSTOMIZE: Replace with your name -->
+  <span>© 2026 Danish</span>
+  <span>Built with HTML & CSS only</span>
+</footer>
+
+</body>
+</html>
